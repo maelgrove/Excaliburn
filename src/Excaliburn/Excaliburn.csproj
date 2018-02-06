@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F38BE02E-D5BC-4DA8-91CF-1774E3ADBE6F}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <RootNamespace>Excaliburn</RootNamespace>
+    <AssemblyName>Excaliburn</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Caliburn.Micro, Version=3.2.0.0, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Caliburn.Micro.Core.3.2.0\lib\net45\Caliburn.Micro.dll</HintPath>
+    </Reference>
+    <Reference Include="Caliburn.Micro.Platform, Version=3.2.0.0, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Caliburn.Micro.3.2.0\lib\net45\Caliburn.Micro.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Caliburn.Micro.Platform.Core, Version=3.2.0.0, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Caliburn.Micro.3.2.0\lib\net45\Caliburn.Micro.Platform.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Caliburn.Micro.3.2.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Bootstrapper.cs" />
+    <Compile Include="ComponentModel\Commands\BindableCommand.cs" />
+    <Compile Include="ComponentModel\Commands\CommandDefinition.cs" />
+    <Compile Include="ComponentModel\Commands\CommandHandler.cs" />
+    <Compile Include="ComponentModel\Commands\CommandKeyGesture.cs" />
+    <Compile Include="ComponentModel\Commands\CommandListSource.cs" />
+    <Compile Include="ComponentModel\Commands\CommandState.cs" />
+    <Compile Include="ComponentModel\Commands\ServiceCollectionExtensions.cs" />
+    <Compile Include="ComponentModel\Composition\ServiceCollection.cs" />
+    <Compile Include="ComponentModel\Composition\FactoryComponentRegistration.cs" />
+    <Compile Include="ComponentModel\Composition\IServiceCollection.cs" />
+    <Compile Include="ComponentModel\Composition\IServiceContainer.cs" />
+    <Compile Include="ComponentModel\Composition\ServiceCollectionExtensions.cs" />
+    <Compile Include="ComponentModel\Composition\ServiceCollectionExtensions.Factory.cs" />
+    <Compile Include="ComponentModel\Composition\ServiceCollectionExtensions.Instance.cs" />
+    <Compile Include="ComponentModel\Composition\ServiceCollectionExtensions.Typed.cs" />
+    <Compile Include="ComponentModel\Composition\ServiceContainerExtensions.cs" />
+    <Compile Include="ComponentModel\Composition\ServiceLifetime.cs" />
+    <Compile Include="ComponentModel\Composition\ServiceRegistration.cs" />
+    <Compile Include="ComponentModel\Composition\InstanceServiceRegistration.cs" />
+    <Compile Include="ComponentModel\Composition\NoopServiceContainer.cs" />
+    <Compile Include="ComponentModel\Composition\TypedServiceRegistration.cs" />
+    <Compile Include="Core\Input\Command.cs" />
+    <Compile Include="Core\Input\DelegateCommand.cs" />
+    <Compile Include="Core\Input\ICommandEx.cs" />
+    <Compile Include="ComponentModel\Commands\ICommandHandler.cs" />
+    <Compile Include="ComponentModel\Commands\ICommandListSource.cs" />
+    <Compile Include="ComponentModel\Menus\CommandListMenuItemDefinition.cs" />
+    <Compile Include="ComponentModel\Menus\CommandMenuItemDefinition.cs" />
+    <Compile Include="ComponentModel\Menus\MenuItemDefinition.cs" />
+    <Compile Include="ComponentModel\Menus\MenuItemGroupDefinition.cs" />
+    <Compile Include="ComponentModel\Menus\TextMenuItemDefinition.cs" />
+    <Compile Include="Modules\MenuBar\IMenuBar.cs" />
+    <Compile Include="Modules\MenuBar\Models\CommandListMenuItem.cs" />
+    <Compile Include="Modules\MenuBar\Models\CommandMenuItem.cs" />
+    <Compile Include="Modules\MenuBar\Models\MenuBarItem.cs" />
+    <Compile Include="Modules\MenuBar\Models\MenuBarItemCollection.cs" />
+    <Compile Include="Modules\MenuBar\Models\MenuItem.cs" />
+    <Compile Include="Modules\MenuBar\Models\MenuItemSeparator.cs" />
+    <Compile Include="Modules\MenuBar\Models\TextMenuItem.cs" />
+    <Compile Include="Modules\MenuBar\ViewModels\MenuBarViewModel.cs" />
+    <Compile Include="Modules\Workspace\IWorkspace.cs" />
+    <Compile Include="Modules\Workspace\IWorkspaceTool.cs" />
+    <Compile Include="Modules\Workspace\WorkspaceTool.cs" />
+    <Compile Include="Modules\Workspace\WorkspaceToolAlignment.cs" />
+    <Compile Include="Modules\ShellWindow\IShellWindow.cs" />
+    <Compile Include="Modules\Workspace\IWorkspaceDocument.cs" />
+    <Compile Include="Modules\Workspace\IWorkspaceItem.cs" />
+    <Compile Include="Modules\Workspace\WorkspaceItem.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Core\Collections\ObservableHashSet.cs" />
+    <Compile Include="Themes\ITheme.cs" />
+    <Compile Include="Themes\IThemeService.cs" />
+    <Compile Include="ComponentModel\ToolBars\CommandToolBarItemDefinition.cs" />
+    <Compile Include="ComponentModel\ToolBars\ToolBarCommandItemDisplay.cs" />
+    <Compile Include="ComponentModel\ToolBars\ToolBarDefinition.cs" />
+    <Compile Include="ComponentModel\ToolBars\ToolBarItemDefinition.cs" />
+    <Compile Include="ComponentModel\ToolBars\ToolBarItemGroupDefinition.cs" />
+    <Compile Include="Windows\IWindow.cs" />
+    <Compile Include="Windows\Window.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Core\Diagnostics\" />
+    <Folder Include="Modules\MenuBar\Views\" />
+    <Folder Include="Modules\ShellWindow\ViewModels\" />
+    <Folder Include="Modules\ShellWindow\Views\" />
+    <Folder Include="Modules\Shell\ViewModels\" />
+    <Folder Include="Modules\Shell\Views\" />
+    <Folder Include="Modules\StatusBar\ViewModels\" />
+    <Folder Include="Modules\StatusBar\Views\" />
+    <Folder Include="Modules\ToolBars\ViewModels\" />
+    <Folder Include="Modules\ToolBars\Views\" />
+    <Folder Include="Modules\ToolBox\ViewModels\" />
+    <Folder Include="Modules\ToolBox\Views\" />
+    <Folder Include="Modules\Workspace\ViewModels\" />
+    <Folder Include="Modules\Workspace\Views\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
