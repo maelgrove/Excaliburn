@@ -6,6 +6,8 @@ using System.Collections.Generic;
 
 namespace Excaliburn.ComponentModel.Composition
 {
+    // TODO allow to replace previously registered registrations
+
     /// <summary>
     ///     Represents a mutable collection of <see cref="ServiceRegistration" />s.
     /// </summary>

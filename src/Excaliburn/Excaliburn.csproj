@@ -69,6 +69,9 @@
     <Compile Include="ComponentModel\Commands\CommandKeyGesture.cs" />
     <Compile Include="ComponentModel\Commands\CommandListSource.cs" />
     <Compile Include="ComponentModel\Commands\CommandState.cs" />
+    <Compile Include="ComponentModel\Commands\CommandStateProvider.cs" />
+    <Compile Include="ComponentModel\Commands\ICommandService.cs" />
+    <Compile Include="ComponentModel\Commands\ICommandStateProvider.cs" />
     <Compile Include="ComponentModel\Commands\ServiceCollectionExtensions.cs" />
     <Compile Include="ComponentModel\Composition\ServiceCollection.cs" />
     <Compile Include="ComponentModel\Composition\FactoryComponentRegistration.cs" />

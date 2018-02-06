@@ -10,10 +10,10 @@ namespace Excaliburn.Autofac
 {
     internal static class AutofacContainerBuilderExtensions
     {
-        public static void Populate(this ContainerBuilder builder, IServiceCollection components)
+        public static void Populate(this ContainerBuilder builder, IServiceCollection services)
         {
             builder.RegisterType<AutofacCompositionContainer>().As<IServiceContainer>();
-            foreach (var registration in components)
+            foreach (var registration in services)
                 switch (registration)
                 {
                     case TypedServiceRegistration typedRegistration:
@@ -26,8 +26,8 @@ namespace Excaliburn.Autofac
                         var registrationBuilder = RegistrationBuilder.ForDelegate(factoryRegistration.ServiceType,
                                 (context, parameters) =>
                                 {
-                                    var compositionContainer = context.Resolve<IServiceContainer>();
-                                    return factoryRegistration.ImplementationFactory(compositionContainer);
+                                    var serviceContainer = context.Resolve<IServiceContainer>();
+                                    return factoryRegistration.ImplementationFactory(serviceContainer);
                                 })
                             .ConfigureRegistration(factoryRegistration)
                             .CreateRegistration();

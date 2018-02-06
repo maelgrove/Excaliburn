@@ -13,9 +13,11 @@ namespace Excaliburn.ComponentModel.Commands
         /// </summary>
         /// <param name="services">The <see cref="IServiceCollection"/>.</param>
         /// <returns>The <see cref="IServiceCollection"/>.</returns>
-        public static IServiceCollection AddCommands(this IServiceCollection services)
+        public static IServiceCollection AddCommanding(this IServiceCollection services)
         {
-            // TODO implement
+            services.AddShared<ICommandStateProvider, CommandStateProvider>();
+
+            // TODO add command related services
             return services;
         }
 

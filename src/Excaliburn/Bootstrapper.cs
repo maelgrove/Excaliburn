@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Threading;
 using Caliburn.Micro;
+using Excaliburn.ComponentModel.Commands;
 using Excaliburn.ComponentModel.Composition;
 
 #endregion
@@ -35,7 +36,7 @@ namespace Excaliburn
         {
             OnConfigureBootstrapper();
             var components = new ServiceCollection();
-            RegisterBuiltInComponents(components);
+            RegisterBuiltinServices(components);
             OnConfigureServices(components);
             Container = ConfigureServices(components);
         }
@@ -171,17 +172,13 @@ namespace Excaliburn
             OnPreInitialize();
         }
 
-        private void RegisterBuiltInComponents(IServiceCollection components)
+        private void RegisterBuiltinServices(IServiceCollection services)
         {
-            components.AddScoped<IWindowManager, WindowManager>();
-            components.AddScoped<IEventAggregator, EventAggregator>();
+            services.AddScoped<IWindowManager, WindowManager>();
+            services.AddScoped<IEventAggregator, EventAggregator>();
+            services.AddCommanding();
 
-            // TODO register
-            //  - logging
-            //  - command services
-            //  - default vms
-            //  - default commands, menus, themes
-            // TODO configuration??
+            // TODO register builtin services
         }
     }
 }
