@@ -66,13 +66,13 @@ namespace Excaliburn.Core.Input
         ///     be set to null.
         /// </param>
         /// <returns>true if this command can be executed; otherwise, false.</returns>
-        public virtual bool CanExecute(TParameter parameter) => true;
+        public virtual bool CanExecute(TParameter parameter = default(TParameter)) => true;
 
         /// <summary>Defines the method to be called when the command is invoked.</summary>
         /// <param name="parameter">
         ///     Data used by the command.  If the command does not require data to be passed, this object can
         ///     be set to null.
         /// </param>
-        public abstract void Execute(TParameter parameter);
+        public abstract void Execute(TParameter parameter = default(TParameter));
     }
 }

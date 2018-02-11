@@ -1,6 +1,7 @@
 ﻿#region
 
 using System;
+using System.Windows.Input;
 
 #endregion
 
@@ -12,8 +13,7 @@ namespace Excaliburn.ComponentModel.Commands
     ///     for commands and can be linked to associated command handlers, menu items or hotkeys.
     /// </summary>
     /// <typeparam name="TCommandHandler">
-    ///     The type of the associated command handler, implementing
-    ///     <see cref="ICommandHandler" />.
+    ///     The type of the associated command handler, implementing <see cref="ICommandHandler" />.
     /// </typeparam>
     public abstract class CommandDefinition<TCommandHandler> : CommandDefinition
         where TCommandHandler : ICommandHandler

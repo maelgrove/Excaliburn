@@ -1,7 +1,7 @@
 ﻿#region
 
 using System;
-using Excaliburn.ComponentModel.Composition;
+using Excaliburn.Composition;
 
 #endregion
 

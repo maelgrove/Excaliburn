@@ -10,7 +10,7 @@ namespace Excaliburn.ComponentModel.Menus
     ///     Represents the definition of a standard text menu item. Text menu items are simple
     ///     menu items which can be used for displaying categories.
     /// </summary>
-    public class TextMenuItemDefinition : MenuItemDefinition
+    public class TextMenuItemDefinition : SubMenuItemDefinition
     {
         /// <summary>
         ///     Returns the display text of the item.

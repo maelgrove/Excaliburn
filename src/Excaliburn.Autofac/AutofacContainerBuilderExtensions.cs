@@ -2,7 +2,7 @@
 
 using Autofac;
 using Autofac.Builder;
-using Excaliburn.ComponentModel.Composition;
+using Excaliburn.Composition;
 
 #endregion
 

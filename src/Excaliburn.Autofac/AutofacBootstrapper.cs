@@ -1,7 +1,7 @@
 ﻿#region
 
 using Autofac;
-using Excaliburn.ComponentModel.Composition;
+using Excaliburn.Composition;
 
 #endregion
 

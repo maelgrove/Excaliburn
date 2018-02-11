@@ -6,7 +6,10 @@ using System.Windows;
 using System.Windows.Threading;
 using Caliburn.Micro;
 using Excaliburn.ComponentModel.Commands;
-using Excaliburn.ComponentModel.Composition;
+using Excaliburn.ComponentModel.Menus;
+using Excaliburn.ComponentModel.Shortcuts;
+using Excaliburn.Composition;
+using Excaliburn.Modules.MainMenu;
 
 #endregion
 
@@ -176,7 +179,12 @@ namespace Excaliburn
         {
             services.AddScoped<IWindowManager, WindowManager>();
             services.AddScoped<IEventAggregator, EventAggregator>();
+
+            // excaliburn services
             services.AddCommanding();
+            services.AddShortcuts();
+            services.AddMenus();
+            services.AddMainMenu();
 
             // TODO register builtin services
         }

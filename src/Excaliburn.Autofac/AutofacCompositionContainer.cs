@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using Autofac;
 using Autofac.Core;
-using Excaliburn.ComponentModel.Composition;
+using Excaliburn.Composition;
 
 #endregion
 

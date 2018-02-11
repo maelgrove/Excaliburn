@@ -33,7 +33,7 @@ namespace Excaliburn.ComponentModel.Menus
     ///     Represents the definition of a command menu item. Command menu items can be used to
     ///     invoke commands from a menu item.
     /// </summary>
-    public abstract class CommandMenuItemDefinition : MenuItemDefinition
+    public abstract class CommandMenuItemDefinition : SubMenuItemDefinition
     {
         /// <summary>
         ///     Returns the type contract of the associated command definition.

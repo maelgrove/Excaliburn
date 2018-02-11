@@ -1,5 +1,6 @@
 ﻿
-using Excaliburn.ComponentModel.Composition;
+using System;
+using Excaliburn.Composition;
 
 namespace Excaliburn.ComponentModel.Commands
 {
@@ -15,10 +16,41 @@ namespace Excaliburn.ComponentModel.Commands
         /// <returns>The <see cref="IServiceCollection"/>.</returns>
         public static IServiceCollection AddCommanding(this IServiceCollection services)
         {
-            services.AddShared<ICommandStateProvider, CommandStateProvider>();
+            if (services == null)
+                throw new ArgumentNullException(nameof(services));
+
+            services.AddShared<ICommandStateCache, CommandStateCache>();
 
             // TODO add command related services
             return services;
+        }
+
+        /// <summary>
+        ///     Adds the specified command definition to the <see cref="IServiceCollection"/>.
+        /// </summary>
+        /// <typeparam name="TCommandDefinition">The type of the command definition, inheriting from <see cref="CommandDefinition"/>.</typeparam>
+        /// <param name="services">The <see cref="IServiceCollection"/>.</param>
+        /// <returns>The <see cref="IServiceCollection"/>.</returns>
+        public static IServiceCollection AddCommand<TCommandDefinition>(this IServiceCollection services) 
+            where TCommandDefinition : CommandDefinition
+        {
+            if (services == null)
+                throw new ArgumentNullException(nameof(services));
+            return services.AddShared<CommandDefinition, TCommandDefinition>();
+        }
+
+        /// <summary>
+        ///     Adds the specified command definition to the <see cref="IServiceCollection"/>.
+        /// </summary>
+        /// <typeparam name="TCommandHandler">The type of the command handler, implementing <see cref="ICommandHandler"/>.</typeparam>
+        /// <param name="services">The <see cref="IServiceCollection"/>.</param>
+        /// <returns>The <see cref="IServiceCollection"/>.</returns>
+        public static IServiceCollection AddCommandHandler<TCommandHandler>(this IServiceCollection services)
+            where TCommandHandler : ICommandHandler
+        {
+            if (services == null)
+                throw new ArgumentNullException(nameof(services));
+            return services.AddTransient<TCommandHandler>();
         }
 
         /// <summary>
@@ -34,20 +66,11 @@ namespace Excaliburn.ComponentModel.Commands
             where TCommandDefinition : CommandDefinition<TCommandHandler>
             where TCommandHandler : ICommandHandler
         {
-            services.AddShared<TCommandDefinition>();
-            services.AddTransient<TCommandHandler>();
-            return services;
+            if (services == null)
+                throw new ArgumentNullException(nameof(services));
+            return services
+                .AddCommand<TCommandDefinition>()
+                .AddCommandHandler<TCommandHandler>();
         }
-
-        /// <summary>
-        ///     Adds the specified <see cref="CommandKeyGesture"/> to the <see cref="IServiceCollection"/>.
-        /// </summary>
-        /// <typeparam name="TCommandDefinition"></typeparam>
-        /// <param name="services">The <see cref="IServiceCollection"/>.</param>
-        /// <param name="commandKeyGesture">The <see cref="CommandKeyGesture"/> to add.</param>
-        /// <returns>The <see cref="IServiceCollection"/>.</returns>
-        public static IServiceCollection AddCommandKeyGesture<TCommandDefinition>(this IServiceCollection services,
-            CommandKeyGesture<TCommandDefinition> commandKeyGesture) 
-            where TCommandDefinition : CommandDefinition => services.AddShared<CommandKeyGesture>(commandKeyGesture);
     }
 }
